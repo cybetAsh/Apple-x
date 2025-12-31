@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>APPLE - X</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    *{
+        box-sizing:border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body{
+        margin:0;
+        background: radial-gradient(circle at top, #300000, #000);
+        color:#fff;
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .hidden{display:none;}
+
+    .card{
+        width:340px;
+        background:#0b0b0b;
+        border-radius:18px;
+        padding:25px;
+        box-shadow:
+            0 0 20px rgba(255,0,0,0.4),
+            inset 0 0 15px rgba(255,0,0,0.25);
+        text-align:center;
+        transform:perspective(1000px) rotateX(4deg);
+    }
+
+    .card img{
+        width:90px;
+        height:90px;
+        border-radius:50%;
+        object-fit:cover;
+        margin-bottom:15px;
+        border:3px solid #900;
+        box-shadow:0 0 15px #f00;
+    }
+
+    h2,h1{
+        margin:10px 0;
+        color:#ff2b2b;
+        text-shadow:0 0 10px rgba(255,0,0,0.7);
+    }
+
+    input{
+        width:100%;
+        padding:12px;
+        border-radius:10px;
+        border:none;
+        outline:none;
+        margin:10px 0;
+        background:#111;
+        color:#fff;
+        box-shadow: inset 0 0 10px rgba(255,0,0,0.4);
+    }
+
+    .btn{
+        width:100%;
+        padding:12px;
+        border:none;
+        border-radius:12px;
+        margin-top:10px;
+        cursor:pointer;
+        font-weight:bold;
+        color:#fff;
+        background:linear-gradient(145deg,#b00000,#600000);
+        box-shadow:0 6px 15px rgba(255,0,0,0.6);
+        transition:.2s;
+    }
+
+    .btn:hover{
+        transform:translateY(-2px);
+        box-shadow:0 10px 20px rgba(255,0,0,0.9);
+    }
+
+    .error{
+        margin-top:10px;
+        color:#ff4444;
+    }
+
+    /* Loader */
+    .loader{
+        width:130px;
+        height:130px;
+        border:6px solid #330000;
+        border-top:6px solid red;
+        border-radius:50%;
+        animation:spin 1s linear infinite;
+        margin:auto;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        box-shadow:0 0 25px red;
+    }
+
+    @keyframes spin{
+        100%{transform:rotate(360deg);}
+    }
+
+    .loader span{
+        position:absolute;
+        color:red;
+        font-weight:bold;
+        text-shadow:0 0 10px red;
+    }
+
+    /* Radio menu */
+    .menu{
+        text-align:left;
+        margin:15px 0;
+    }
+
+    .menu label{
+        display:block;
+        margin:8px 0;
+        cursor:pointer;
+    }
+
+    .menu input{
+        width:auto;
+        margin-right:8px;
+    }
+
+    .success{
+        margin-top:15px;
+        color:#00ff6a;
+        font-weight:bold;
+    }
+
+    .contact{
+        margin-top:20px;
+    }
+
+    .telegram-btn{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        padding:12px 18px;
+        border-radius:15px;
+        background:linear-gradient(145deg,#0088cc,#005f8c);
+        color:#fff;
+        text-decoration:none;
+        box-shadow:0 6px 15px rgba(0,136,204,.7);
+        font-weight:bold;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD PAGE -->
+<div class="card" id="loginPage">
+    <!-- upload your image here -->
+    <img src="https://i.imgur.com/4Z7ZKzK.png" alt="logo">
+
+    <h2>Enter Pass Key</h2>
+    <input type="password" id="pass" placeholder="Enter Password">
+    <button class="btn" onclick="checkPass()">LOGIN</button>
+
+    <div class="error" id="passError"></div>
+
+    <button class="btn" style="background:#700;" onclick="getKey()">Get Key</button>
+</div>
+
+<!-- LOADER -->
+<div class="hidden" id="loaderPage">
+    <div class="loader">
+        <span>APPLE - X</span>
+    </div>
+</div>
+
+<!-- MAIN PAGE -->
+<div class="card hidden" id="mainPage">
+    <h1>APPLE - X CREATION</h1>
+
+    <input type="text" id="number" placeholder="Enter Attack Number With Country Code">
+
+    <div class="menu">
+        <label><input type="radio" name="crash" value="Invisible Crash">Invisible Crash</label>
+        <label><input type="radio" name="crash" value="Apple-Xtrash">Apple-Xtrash</label>
+        <label><input type="radio" name="crash" value="DealyApple">DealyApple</label>
+    </div>
+
+    <button class="btn" onclick="sendTrash()">Send Trash</button>
+
+    <div class="success" id="successMsg"></div>
+
+    <div class="contact">
+        <a class="telegram-btn" href="https://t.me/applex13" target="_blank">
+            Contact Owner
+        </a>
+    </div>
+</div>
+
+<script>
+function checkPass(){
+    const pass = document.getElementById("pass").value;
+    const error = document.getElementById("passError");
+
+    if(pass === "20050118"){
+        document.getElementById("loginPage").classList.add("hidden");
+        document.getElementById("loaderPage").classList.remove("hidden");
+
+        setTimeout(()=>{
+            document.getElementById("loaderPage").classList.add("hidden");
+            document.getElementById("mainPage").classList.remove("hidden");
+        },2000);
+    }else{
+        error.innerText = "Wrong Pass Key";
+    }
+}
+
+function getKey(){
+    window.open(
+        "https://t.me/applex13?text=Hi%20I%20Need%20Access%20Key",
+        "_blank"
+    );
+}
+
+function sendTrash(){
+    const number = document.getElementById("number").value;
+    const crash = document.querySelector('input[name="crash"]:checked');
+
+    if(number === ""){
+        alert("Please Enter The Crash Number");
+        return;
+    }
+
+    if(!crash){
+        alert("Please Select One Option");
+        return;
+    }
+
+    document.getElementById("successMsg").innerText =
+        "Your Crash is Succesfully ✅";
+}
+</script>
+
+</body>
+</html>
